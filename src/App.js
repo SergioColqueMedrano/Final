@@ -1,8 +1,15 @@
+import {Routes, Route} from 'react-router-dom'
+import { Home } from './components/Home'
+import { Login } from './components/Login'
+
 function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div className="bg-slate-300 h-screen flex">
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login" element={<Login/>}/>
+      </Routes>
+    </div>
   )
 }
 
