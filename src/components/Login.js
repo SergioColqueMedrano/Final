@@ -1,20 +1,37 @@
-import {user, email, setEmail, password, setPassword, error, loading} from '../hooks/useAuth.js'
-import useAuth from '../hooks/useAuth.js'
-
+import useAuth from "../hooks/useAuth.js";
 
 export function Login() {
-    const {user, email, setEmail, password, setPassword, error, loading, login} = useAuth()
+  const { email, setEmail, password, setPassword, login } = useAuth();
   return (
-    <div className="container mx-auto flex flex-col">
-      <input className="border-2 border-stone-500 rounded-lg px-2 my-2" placeholder="Email" type="email" value={email} onChange={e => setEmail(e.target.value)} />
-      <input className="border-2 border-stone-500 rounded-lg px-2 my-2" placeholder="Contraseña" type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      <button
-        className="bg-stone-300 rounded-lg border-2 border-stone-500 text-stone-500 duration-300 hover:scale-105"
-        onClick={login}
-      >
-        Iniciar sesión
-      </button>
-    </div>
-  )
-}
+    <div className="w-full max-w-xs m-auto">
+      <div className="bg-white shadow-md rounded px-8 pt-10 pb-10 mb-4">
+        <div className="mb-4">
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
+        <div className="mb-4">
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-grey-700 leading-tight focus:outline-none focus:shadow-outline"
+            placeholder="Contraseña"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <button
+          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-noene focus:shadow-outline"
+          onClick={login}
+        >
+          Iniciar sesión
+        </button>
+      </div>
+    </div>
+  );
+}
