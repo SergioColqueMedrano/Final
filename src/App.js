@@ -4,7 +4,7 @@ import { Login } from "./components/Login";
 
 function App() {
   return (
-    <div className="bg-slate-300 h-screen flex">
+    <div className="bg-green-300 h-screen flex">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/home" element={<Home />} />
