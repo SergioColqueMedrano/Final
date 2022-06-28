@@ -8,7 +8,7 @@ export function Login() {
         <header>
           <img
             class="w-40 h-40 mx-auto mb-5"
-            src="https://yt3.ggpht.com/ytc/AKedOLS3w8MVoudKGmm-2Sn5IBDn-obo35v2RgQXDoTvJQ=s900-c-k-c0x00ffffff-no-rj"
+            src="https://o.remove.bg/downloads/6ab846bd-5b5a-4f3c-b810-51868b512624/unnamed-removebg-preview.png"
           />
         </header>
         <div className="mb-4">
