@@ -4,11 +4,11 @@ export function Login() {
   const { email, setEmail, password, setPassword, login } = useAuth();
   return (
     <div className="w-full max-w-xs m-auto bg-green-800 rounded p-5">
-      <div className="bg-white shadow-md rounded px-8 pt-10 pb-10 mb-4">
+      <div className="shadow-md rounded px-8 pt-10 pb-10 mb-4 bg-neutral-100">
         <header>
           <img
-            class="w-20 mx-auto mb-5"
-            src="https://media-exp1.licdn.com/dms/image/C4D0BAQEOnrqc-ot2fg/company-logo_200_200/0/1582907484241?e=2147483647&v=beta&t=hrOXYziFMS9Yu_KBrmK0y1zMtiEHkDzK-gkWjeZ7gTw"
+            class="w-40 h-40 mx-auto mb-5"
+            src="https://yt3.ggpht.com/ytc/AKedOLS3w8MVoudKGmm-2Sn5IBDn-obo35v2RgQXDoTvJQ=s900-c-k-c0x00ffffff-no-rj"
           />
         </header>
         <div className="mb-4">
