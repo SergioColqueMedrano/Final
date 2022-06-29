@@ -45,6 +45,7 @@ export default function Socios() {
       nombre: obj.nombre,
       dni: obj.dni,
       dob: obj.dob,
+      activo: true,
     });
     console.log(dbRef.id);
     clearInput();
@@ -103,43 +104,84 @@ export default function Socios() {
                 <tr>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                   >
-                    ID
+                    Nombre
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                   >
                     Apellido
                   </th>
                   <th
                     scope="col"
-                    class="text-sm font-medium text-gray-900 px-6 py-4"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                   >
-                    Nombre
+                    D.N.I.
+                  </th>
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    Fecha Nacimiento
+                  </th>
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    Socio Activo
+                  </th>
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    ID
+                  </th>
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    Agregar Adherente
+                  </th>
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    Dar de baja
                   </th>
                 </tr>
               </thead>
               <tbody className="w-full pt-500">
                 {listSocios.map((socios, index) => (
                   <tr className="border-b" key={index}>
-                    <td className="border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap hover:bg-green-300">
-                      {socios.id}
-                    </td>
-                    <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
-                      {socios.apellido}
-                    </td>
-                    <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                    <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.nombre}
                     </td>
-                    <td className="border border-slate-700">
-                      <button className=" bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">
-                        +
-                      </button>
+                    <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                      {socios.apellido}
+                    </td>
+                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                      {socios.dni}
+                    </td>
+                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                      {socios.dob}
+                    </td>
 
-                      <button className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2">
-                        x
+                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                      {socios.activo ? "✔️" : "❌"}
+                    </td>
+                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                      {socios.id}
+                    </td>
+                    <td className="border max-w-xs border-slate-700 bg-slate-400">
+                      <button className="border max-w-xs bg-green-400 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full">
+                        ➕
+                      </button>
+                    </td>
+                    <td className="border max-w-xs border-slate-700 bg-slate-400">
+                      <button className="border max-w-xs bg-slate-300 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-2 mt-2">
+                        ❌
                       </button>
                     </td>
                   </tr>
