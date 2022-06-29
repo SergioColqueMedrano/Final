@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as firebase from "../firebase";
+import * as firebase from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 export default function useAuth() {
@@ -16,7 +16,7 @@ export default function useAuth() {
       setLoading(true);
       const u = await firebase.login(email, password);
       setUser(u);
-      navigate('/home');
+      navigate("/home");
     } catch (error) {
       setError(error.message);
     } finally {
