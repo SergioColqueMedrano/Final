@@ -6,7 +6,7 @@ export default function Barra() {
   return (
     <div className="w-full h-24 bg-green-800 mx-auto">
       <img
-        className="absolute mt-2 max-h-20"
+        className="absolute mt-2 ml-2 max-h-20"
         src="https://sanatorioadventista.org.ar/assets/img/footer_logo_sap.png"
       ></img>
 
