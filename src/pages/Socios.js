@@ -4,7 +4,6 @@ import "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { async } from "@firebase/util";
-import { list } from "postcss";
 
 export default function Socios() {
   const navigate = useNavigate();
@@ -82,24 +81,48 @@ export default function Socios() {
           </button>
         </div>
       </div>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Apellido</th>
-            <th>Nombre</th>
-          </tr>
-        </thead>
-        <tbody className="w-full pt-500">
-          {listSocios.map((socios, index) => (
-            <tr key={index}>
-              <td>{socios.id}</td>
-              <td>{socios.apellido}</td>
-              <td>{socios.nombre}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div class="flex flex-col">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8"></div>
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8"></div>
+        <div class="overflow-hidden">
+          <table className="min-w-full text-center border-collapse">
+            <thead className="border-b">
+              <tr>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-gray-900 px-6 py-4"
+                >
+                  ID
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-gray-900 px-6 py-4"
+                >
+                  Apellido
+                </th>
+                <th
+                  scope="col"
+                  class="text-sm font-medium text-gray-900 px-6 py-4"
+                >
+                  Nombre
+                </th>
+              </tr>
+            </thead>
+            <tbody className="w-full pt-500">
+              {listSocios.map((socios, index) => (
+                <tr className="border-b"key={index}>
+                  <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap hover:bg-green-300">{socios.id}</td>
+                  <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">{socios.apellido}</td>
+                  <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">{socios.nombre}</td>
+                  <button className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">+</button>
+                  
+                  <button className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-4">x</button>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
