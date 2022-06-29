@@ -98,7 +98,6 @@ export default function SeleccionarCobro(props) {
                       <td className="max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                         {cobros.id}
                       </td>
-                      <Boton onClick={() => setEstadoModal(!estadoModal)}>✔️</Boton>
                     </tr>
                   ))}
                 </tbody>
