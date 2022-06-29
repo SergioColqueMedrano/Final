@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "firebase/firestore";
 import { db } from "../firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import Barra from "../components/Barra";
 import { async } from "@firebase/util";
 
 export default function Socios() {
@@ -21,24 +22,6 @@ export default function Socios() {
   const [dni, setDni] = useState("");
   const [dob, setDob] = useState("");
 
-  /*const getSocios = async () => {
-    let obj;
-    let lista = [];
-    const querySnapshot = await db.collection("socios").get();
-    querySnapshot.forEach((doc) => {
-      obj = doc.data();
-      obj.id = doc.id;
-      lista.push(obj);
-    });
-    setListSocios(lista);
-  };
-
-  useEffect(() => {
-    const getData = async () => {
-      const datos = await getDocs(collection(db, "socios"));
-      console.log(datos.docs[0].data());
-    };*/
-
   const getSocios = async () => {
     let obj;
     let lista = [];
@@ -55,72 +38,115 @@ export default function Socios() {
     getSocios();
   }, []);
 
+  const addSocio = async () => {
+    const obj = { apellido, nombre, dni, dob };
+    const dbRef = await addDoc(collection(db, "socios"), {
+      apellido: obj.apellido,
+      nombre: obj.nombre,
+      dni: obj.dni,
+      dob: obj.dob,
+    });
+    console.log(dbRef.id);
+    clearInput();
+    getSocios();
+  };
+  const clearInput = () => {
+    setApellido("");
+    setNombre("");
+    setDni("");
+    setDob("");
+  };
+
   return (
     <div className="w-full">
-      <div className="w-full h-24 bg-green-800 mx-auto">
-        <img
-          className="absolute mt-2 max-h-20"
-          src="https://sanatorioadventista.org.ar/assets/img/footer_logo_sap.png"
-        ></img>
+      <Barra></Barra>
 
-        <div className="absolute mt-3 w-fit h-16 pl-36 flex">
-          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3 h-full">
-            Gestionar Socios
-          </button>
-          <button
-            className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full"
-            onClick={navegarA}
-          >
-            Gestionar Adherentes
-          </button>
-          <button
-            className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full"
-            onClick={navegarC}
-          >
-            Gestionar Cobros
-          </button>
+      <div className="row p-2">
+        <div className="col-md-4">
+          <div className="card p-2">
+            <input
+              className="form-control mb-2"
+              placeholder="Apellido"
+              onChange={(e) => setApellido(e.target.value)}
+              value={apellido}
+            />
+            <input
+              className="form-control mb-2"
+              placeholder="Nombre"
+              onChange={(e) => setNombre(e.target.value)}
+              value={nombre}
+            />
+            <input
+              className="form-control mb-2"
+              placeholder="DNI"
+              onChange={(e) => setDni(e.target.value)}
+              value={dni}
+            />
+            <input
+              className="form-control mb-2"
+              placeholder="DOB"
+              onChange={(e) => setDob(e.target.value)}
+              value={dob}
+            />
+            <button
+              className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2"
+              onClick={addSocio}
+            >
+              Aceptar
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="flex flex-col">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8"></div>
-        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8"></div>
-        <div class="overflow-hidden">
-          <table className="min-w-full text-center border-collapse">
-            <thead className="border-b">
-              <tr>
-                <th
-                  scope="col"
-                  class="text-sm font-medium text-gray-900 px-6 py-4"
-                >
-                  ID
-                </th>
-                <th
-                  scope="col"
-                  class="text-sm font-medium text-gray-900 px-6 py-4"
-                >
-                  Apellido
-                </th>
-                <th
-                  scope="col"
-                  class="text-sm font-medium text-gray-900 px-6 py-4"
-                >
-                  Nombre
-                </th>
-              </tr>
-            </thead>
-            <tbody className="w-full pt-500">
-              {listSocios.map((socios, index) => (
-                <tr className="border-b"key={index}>
-                  <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap hover:bg-green-300">{socios.id}</td>
-                  <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">{socios.apellido}</td>
-                  <td className="text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">{socios.nombre}</td>
-                  <button className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">+</button>
-                  
-                  <button className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-4">x</button>
+        <div className="">
+          <div className="">
+            <table className="min-w-full text-center table-fixed">
+              <thead className="border-b">
+                <tr>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4"
+                  >
+                    ID
+                  </th>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4"
+                  >
+                    Apellido
+                  </th>
+                  <th
+                    scope="col"
+                    class="text-sm font-medium text-gray-900 px-6 py-4"
+                  >
+                    Nombre
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="w-full pt-500">
+                {listSocios.map((socios, index) => (
+                  <tr className="border-b" key={index}>
+                    <td className="border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap hover:bg-green-300">
+                      {socios.id}
+                    </td>
+                    <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                      {socios.apellido}
+                    </td>
+                    <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap">
+                      {socios.nombre}
+                    </td>
+                    <td className="border border-slate-700">
+                      <button className=" bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full">
+                        +
+                      </button>
+
+                      <button className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2">
+                        x
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
