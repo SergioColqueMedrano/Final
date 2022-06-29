@@ -4,6 +4,7 @@ import Modal from "../components/Modal";
 import { useState } from "react";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
+import SeleccionarCobro from "../hooks/SeleccionarCobro";
 
 export default function AgregarAdherente(props) {
   const [estadoModal, setEstadoModal] = useState(false);
@@ -13,6 +14,8 @@ export default function AgregarAdherente(props) {
   const [dni, setDni] = useState("");
   const [dob, setDob] = useState("");
   const [idPlan, setIdPlan] = useState("");
+
+  //const idPlan2 = props.value
 
   const getAdherentes = async () => {
     let obj;
@@ -42,7 +45,7 @@ export default function AgregarAdherente(props) {
       dob: obj.dob,
       activo: true,
       idSocio: intSocio,
-      idPlan: obj.idPlan,
+      idPlan: obj.idPlan, // Pasar id traida de SeleccionarCobro.js
     });
     console.log(dbRef.id);
     clearInput();
@@ -92,11 +95,15 @@ export default function AgregarAdherente(props) {
               value={dob}
             />
             <input
-              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Id del Plan"
+              className="float-left mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder = {idPlan}
               onChange={(e) => setIdPlan(e.target.value)}
               value={idPlan}
+              readOnly
             />
+            <td className="max-w-xs">
+              <SeleccionarCobro></SeleccionarCobro>
+            </td>
           </div>
           <Boton onClick={() => addAdherente() && setEstadoModal(!estadoModal)}>
             Agregar

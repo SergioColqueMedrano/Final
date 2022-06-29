@@ -35,6 +35,12 @@ export default function Barra() {
         >
           Gestionar Cobros
         </button>
+        <button
+          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full"
+          onClick={navegarExpC}
+        >
+          Exportar Cobros
+        </button>
       </div>
     </div>
   );
@@ -49,5 +55,8 @@ export default function Barra() {
   }
   function navegarA() {
     navigate("/adherentes");
+  }
+  function navegarExpC() {
+    navigate("/exportarCobros");
   }
 }
