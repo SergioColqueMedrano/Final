@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import Barra from "../components/Barra";
 
 export function Home() {
-  const navigate = useNavigate();
-  return (<Barra></Barra>)
+  return (
+      <Barra></Barra>
+  );
 }
