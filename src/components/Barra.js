@@ -1,8 +1,7 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Barra() {
-  const navigate = useNavigate();
   return (
     <div className="w-full h-24 bg-green-800 mx-auto">
       <img
@@ -11,52 +10,27 @@ export default function Barra() {
       ></img>
 
       <div className="absolute mt-3 w-fit h-16 pl-36 flex">
-        <button
-          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3 h-full"
-          onClick={navegarH}
-        >
-          Home
-        </button>
-        <button
-          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3 h-full"
-          onClick={navegarS}
-        >
-          Gestionar Socios
-        </button>
-        <button
-          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full"
-          onClick={navegarA}
-        >
-          Gestionar Adherentes
-        </button>
-        <button
-          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full"
-          onClick={navegarC}
-        >
-          Gestionar Cobros
-        </button>
-        <button
-          className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full"
-          onClick={navegarExpC}
-        >
-          Exportar Cobros
-        </button>
+        <NavLink to={"/app/home"}>
+          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3 h-full">
+            Home
+          </button>
+        </NavLink>
+        <NavLink to={"/app/socios"}>
+          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3 h-full">
+            Gestionar Socios
+          </button>
+        </NavLink>
+        <NavLink to={"/app/adherentes"}>
+          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full">
+            Gestionar Adherentes
+          </button>
+        </NavLink>
+        <NavLink to={"/app/cobros"}>
+          <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded ml-3.5 h-full">
+            Gestionar Cobros
+          </button>
+        </NavLink>
       </div>
     </div>
   );
-  function navegarH() {
-    navigate("/home");
-  }
-  function navegarS() {
-    navigate("/socios");
-  }
-  function navegarC() {
-    navigate("/cobros");
-  }
-  function navegarA() {
-    navigate("/adherentes");
-  }
-  function navegarExpC() {
-    navigate("/exportarCobros");
-  }
 }

@@ -1,6 +1,6 @@
 import useAuth from "../hooks/useAuth.js";
 
-export function Login() {
+export default function Login() {
   const { email, setEmail, password, setPassword, login } = useAuth();
   return (
     <div className="w-full max-w-xs m-auto bg-green-800 rounded p-5">

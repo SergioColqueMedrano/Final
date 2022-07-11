@@ -52,7 +52,6 @@ export default function Socios() {
 
   return (
     <div className="bg-green-300 bg w-full">
-      <Barra></Barra>
 
       <div className="mt-5 flex-col ">
         <div className=" mr-10 float-left pl-10 mt-5 ">
@@ -169,7 +168,7 @@ export default function Socios() {
                     <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.activo ? "✔️" : "❌"}
                     </td>
-                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                    <td className="select-text border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.id}
                     </td>
                     <td className="border max-w-xs border-slate-700 bg-slate-400">

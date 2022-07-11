@@ -46,11 +46,10 @@ export default function Cobros() {
 
   return (
     <div className="bg-green-300 bg w-full">
-      <Barra></Barra>
 
       <div className="mt-5 flex-col ">
         <div className=" mr-10 float-left pl-10 mt-5 ">
-          <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">
+          <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 bg-slate-200">
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Nombre"

@@ -39,7 +39,6 @@ export default function Adherentes() {
 
   return (
     <div className="bg-green-300 bg w-full">
-      <Barra></Barra>
       <div className="flex ml-10 mt-10 mr-10 w-54 h-14">
         <div className="flex">
           <table className="mb-64 flex-col min-w-full text-center table-fixed">
