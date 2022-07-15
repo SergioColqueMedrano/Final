@@ -1,13 +1,24 @@
 import React from "react";
 import Barra from "../components/Barra";
 import { useState, useEffect } from "react";
-import { getDocs, collection, addDoc } from "firebase/firestore";
+import { getDocs, getDoc, doc, collection, addDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import BajaAdherente from "../hooks/BajaAdherente";
 import AltaAdherente from "../hooks/AltaAdherente";
 
 export default function Adherentes() {
   const [listAdherentes, setListAdherentes] = useState([]);
+ 
+  /*
+  const getPlanName = async (idPlanBusqueda) => {
+    const ref = await doc(db, "planes", idPlanBusqueda);
+    const document = await getDoc(ref);
+
+    let planObj = document.data();
+
+    return planObj.nombre;
+  };
+  */
 
   const getAdherentes = async () => {
     let obj;
@@ -28,7 +39,6 @@ export default function Adherentes() {
 
   return (
     <div className="bg-green-300 bg w-full">
-      <Barra></Barra>
       <div className="flex ml-10 mt-10 mr-10 w-54 h-14">
         <div className="flex">
           <table className="mb-64 flex-col min-w-full text-center table-fixed">

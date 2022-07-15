@@ -52,22 +52,21 @@ export default function Socios() {
 
   return (
     <div className="bg-green-300 bg w-full">
-      <Barra></Barra>
 
       <div className="mt-5 flex-col ">
         <div className=" mr-10 float-left pl-10 mt-5 ">
           <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Apellido"
-              onChange={(e) => setApellido(e.target.value)}
-              value={apellido}
-            />
-            <input
-              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Nombre"
               onChange={(e) => setNombre(e.target.value)}
               value={nombre}
+            />
+            <input
+              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Apellido"
+              onChange={(e) => setApellido(e.target.value)}
+              value={apellido}
             />
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -169,7 +168,7 @@ export default function Socios() {
                     <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.activo ? "✔️" : "❌"}
                     </td>
-                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                    <td className="select-text border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.id}
                     </td>
                     <td className="border max-w-xs border-slate-700 bg-slate-400">

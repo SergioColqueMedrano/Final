@@ -16,7 +16,7 @@ export default function useAuth() {
       setLoading(true);
       const u = await firebase.login(email, password);
       setUser(u);
-      navigate("/home");
+      navigate("/app");
     } catch (error) {
       setError(error.message);
     } finally {

@@ -1,6 +1,6 @@
 import useAuth from "../hooks/useAuth.js";
 
-export function Login() {
+export default function Login() {
   const { email, setEmail, password, setPassword, login } = useAuth();
   return (
     <div className="w-full max-w-xs m-auto bg-green-800 rounded p-5">
@@ -8,7 +8,7 @@ export function Login() {
         <header>
           <img
             class="w-40 h-40 mx-auto mb-5"
-            src="https://yt3.ggpht.com/ytc/AKedOLS3w8MVoudKGmm-2Sn5IBDn-obo35v2RgQXDoTvJQ=s900-c-k-c0x00ffffff-no-rj"
+            src="https://o.remove.bg/downloads/9cd76578-6e8c-462d-ad9d-234aa17aa65c/W0DjKZ_A_400x400-removebg-preview.png"
           />
         </header>
         <div className="mb-4">
