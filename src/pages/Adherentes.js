@@ -1,13 +1,23 @@
 import React from "react";
+import "../components/Loading"
 import Barra from "../components/Barra";
 import { useState, useEffect } from "react";
 import { getDocs, getDoc, doc, collection, addDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import BajaAdherente from "../hooks/BajaAdherente";
 import AltaAdherente from "../hooks/AltaAdherente";
+import Loading from "../components/Loading";
 
 export default function Adherentes() {
   const [listAdherentes, setListAdherentes] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const cargarPag = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false);
+    },2000)
+  }
  
   /*
   const getPlanName = async (idPlanBusqueda) => {
@@ -30,15 +40,18 @@ export default function Adherentes() {
       lista.push(obj);
     });
     setListAdherentes(lista);
+    
   };
 
   useEffect(() => {
     getAdherentes();
   }, []);
 
-
+  if(loading){
+    <Loading />
+  }else{
   return (
-    <div className="bg-green-300 bg w-full">
+    <div className="bg-green-180 bg w-full">
       <div className="flex ml-10 mt-10 mr-10 w-54 h-14">
         <div className="flex">
           <table className="mb-64 flex-col min-w-full text-center table-fixed">
@@ -148,4 +161,5 @@ export default function Adherentes() {
       </div>
     </div>
   );
+}
 }

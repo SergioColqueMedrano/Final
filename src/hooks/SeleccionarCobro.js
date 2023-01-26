@@ -40,7 +40,7 @@ export default function SeleccionarCobro(props) {
         className="border max-w-xs bg-green-400 hover:bg-green-800 text-white font-bold py-2 px-4 rounded-full"
         onClick={() => setEstadoModal(!estadoModal)}
       >
-        +
+        + Planes
       </button>
       <Modal
         estado={estadoModal}

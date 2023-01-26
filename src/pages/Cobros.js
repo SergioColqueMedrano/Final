@@ -45,31 +45,31 @@ export default function Cobros() {
   };
 
   return (
-    <div className="bg-green-300 bg w-full">
+    <div className="bg-green-180 bg w-full">
 
       <div className="mt-5 flex-col ">
         <div className=" mr-10 float-left pl-10 mt-5 ">
-          <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 bg-slate-200">
+          <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">
             <input
-              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Nombre"
               onChange={(e) => setNombre(e.target.value)}
               value={nombre}
             />
             <input
-              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Monto"
               onChange={(e) => setMonto(e.target.value)}
               value={monto}
             />
             <input
-              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Descripcion"
               onChange={(e) => setDesc(e.target.value)}
               value={desc}
             />
             <button
-              className="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2"
+              className="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2"
               onClick={addCobro}
             >
               + Crear Plan
