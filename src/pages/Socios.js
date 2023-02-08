@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import Barra from "../components/Barra";
+//import Barra from "../components/Barra";
 import AgregarAdherente from "../hooks/AgregarAdherente";
 import BajaSocio from "../hooks/BajaSocio";
 import AltaSocio from "../hooks/AltaSocio";
