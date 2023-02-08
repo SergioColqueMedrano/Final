@@ -1,6 +1,7 @@
-import React from "react";
-import Barra from "../components/Barra";
+import React, { useEffect, useState } from "react";
+import { BeatLoader } from "react-spinners";
 
 export default function Home() {
   return;
+
 }

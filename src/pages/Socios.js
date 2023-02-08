@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import Barra from "../components/Barra";
 import AgregarAdherente from "../hooks/AgregarAdherente";
 import BajaSocio from "../hooks/BajaSocio";
 import AltaSocio from "../hooks/AltaSocio";
+import { BeatLoader } from "react-spinners";
 
 export default function Socios() {
   const [listSocios, setListSocios] = useState([]);
@@ -25,10 +25,6 @@ export default function Socios() {
     });
     setListSocios(lista);
   };
-
-  useEffect(() => {
-    getSocios();
-  }, []);
 
   const addSocio = async () => {
     const obj = { apellido, nombre, dni, dob };
@@ -50,8 +46,14 @@ export default function Socios() {
     setDob("");
   };
 
+  useEffect(() => {
+    getSocios();
+  }, []);
+
+  
+
   return (
-    <div className="bg-green-180 bg w-full">
+    <div className="bg-green-180 bg ">
       <div className="mt-5 flex-col ">
         <div className=" mr-10 float-left pl-10 mt-5 ">
           <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">

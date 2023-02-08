@@ -18,7 +18,7 @@ export default function useAuth() {
       setUser(u);
       navigate("/app");
     } catch (error) {
-      setError(error.message);
+      setError(error.message)
       alert(error.message);
     } finally {
       setLoading(false);

@@ -46,7 +46,6 @@ export default function Cobros() {
 
   return (
     <div className="bg-green-180 bg w-full">
-
       <div className="mt-5 flex-col ">
         <div className=" mr-10 float-left pl-10 mt-5 ">
           <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">

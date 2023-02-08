@@ -1,12 +1,10 @@
 import React from "react";
-import "../components/Loading"
-import Barra from "../components/Barra";
 import { useState, useEffect } from "react";
 import { getDocs, getDoc, doc, collection, addDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import BajaAdherente from "../hooks/BajaAdherente";
 import AltaAdherente from "../hooks/AltaAdherente";
-import Loading from "../components/Loading";
+import ModificarAdherente from "../hooks/ModificarAdherente";
 
 export default function Adherentes() {
   const [listAdherentes, setListAdherentes] = useState([]);
@@ -47,9 +45,6 @@ export default function Adherentes() {
     getAdherentes();
   }, []);
 
-  if(loading){
-    <Loading />
-  }else{
   return (
     <div className="bg-green-180 bg w-full">
       <div className="flex ml-10 mt-10 mr-10 w-54 h-14">
@@ -97,18 +92,6 @@ export default function Adherentes() {
                   scope="col"
                   class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                 >
-                  ID de Socio
-                </th>
-                <th
-                  scope="col"
-                  class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                >
-                  ID de Plan
-                </th>
-                <th
-                  scope="col"
-                  class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                >
                   Dar de baja
                 </th>
                 <th
@@ -116,6 +99,12 @@ export default function Adherentes() {
                   class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                 >
                   Dar de alta
+                </th>
+                <th
+                  scope="col"
+                  class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                >
+                  Modificar
                 </th>
               </tr>
             </thead>
@@ -141,17 +130,14 @@ export default function Adherentes() {
                   <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                     {adherente.id}
                   </td>
-                  <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                    {adherente.idSocio}
-                  </td>
-                  <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                    {adherente.idPlan}
-                  </td>
                   <td className="border max-w-xs border-slate-700 bg-slate-400">
                     <BajaAdherente value={adherente.id}></BajaAdherente>
                   </td>
                   <td className="border max-w-xs border-slate-700 bg-slate-400">
                     <AltaAdherente value={adherente.id}></AltaAdherente>
+                  </td>
+                  <td className="border max-w-xs border-slate-700 bg-slate-400">
+                    <ModificarAdherente value={adherente.id}></ModificarAdherente>
                   </td>
                 </tr>
               ))}
@@ -161,5 +147,4 @@ export default function Adherentes() {
       </div>
     </div>
   );
-}
-}
+};
