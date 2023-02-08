@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
+import SeleccionarCobro from "./SeleccionarCobro";
 
 export default function ModificarCobro(props) {
   const [estadoModal, setEstadoModal] = useState(false);
@@ -11,19 +12,22 @@ export default function ModificarCobro(props) {
   const [apellido, setApellido] = useState("");
   const [dni, setDni] = useState("");
   const [nombre, setNombre] = useState("");
+  const [idPlan, setIdPlan] = useState("");
 
   const [currentApellido, setCurrentApellido] = useState("");
   const [currentDni, setCurrentDni] = useState("");
   const [currentNombre, setCurrentNombre] = useState("");
+  const [currentIdPlan, setCurrentIdPlan] = useState("");
 
   const modificarAdherente = async () => {
-    const obj = { apellido, dni, nombre };
+    const obj = { apellido, dni, nombre, idPlan };
     const ref = doc(db, "adherentes", props.value);
     const document = await getDoc(ref);
     await updateDoc(ref, {
       apellido: obj.apellido.length === 0 ? currentApellido : obj.apellido,
       dni: obj.dni.length === 0 ? parseInt(currentDni) : parseInt(obj.dni),
       nombre: obj.nombre.length === 0 ? currentNombre : obj.nombre,
+      idPlan: obj.idPlan.length === 0 ? currentIdPlan : obj.idPlan,
     });
   };
 
@@ -34,6 +38,11 @@ export default function ModificarCobro(props) {
     setCurrentApellido(obj.apellido);
     setCurrentDni(obj.dni);
     setCurrentNombre(obj.nombre);
+    setCurrentIdPlan(obj.idPlan);
+  };
+
+  const traerId = (id) => {
+    setIdPlan(id);
   };
   return (
     <div>
@@ -75,6 +84,10 @@ export default function ModificarCobro(props) {
               placeholder={currentDni}
               value={dni}
             />
+            <td className="max-w-xs">
+              <SeleccionarCobro traerId={traerId} value={currentIdPlan}></SeleccionarCobro>
+            </td>
+            
 
             <Boton
               className="float-left mr-7"
