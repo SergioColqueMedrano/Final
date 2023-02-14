@@ -9,13 +9,14 @@ const Modal = ({
 	mostrarHeader,
 	mostrarOverlay,
 	posicionModal,
-	padding
+	padding,
+	mostrarContenedor
 }) => {
 	return (
 		<>
 			{estado && 
 				<Overlay mostrarOverlay={mostrarOverlay} posicionModal={posicionModal}>
-					<ContenedorModal padding={padding}>
+					<ContenedorModal padding={padding} mostrarContenedor={mostrarContenedor}>
 						{mostrarHeader && 
 							<EncabezadoModal>
 								<h3>{titulo}</h3>
@@ -55,10 +56,10 @@ const Overlay = styled.div`
 const ContenedorModal = styled.div`
 	width: 500px;
 	min-height: 100px;
-	background: #fff;
+	background: ${props => props.mostrarContenedor ? '#fff' : 'rgba(0,0,0,0)'};
 	position: relative;
 	border-radius: 5px;
-	box-shadow: rgba(100,100,111, 0.2) 0px 7px 29px 0px;
+	box-shadow: ${props => props.mostrarContenedor ? 'rgba(100,100,111, 0.2) 0px 7px 29px 0px' : 'rgba(0,0,0,0)'};
 	padding: ${props => props.padding ? props.padding : '20px'};
 `;
 

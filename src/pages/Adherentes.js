@@ -8,6 +8,7 @@ import ModificarAdherente from "../hooks/ModificarAdherente";
 
 export default function Adherentes() {
   const [listAdherentes, setListAdherentes] = useState([]);
+  const [planName , setPlanName] = useState("");
   const [loading, setLoading] = useState(false);
 
   const cargarPag = () => {
@@ -40,6 +41,7 @@ export default function Adherentes() {
     setListAdherentes(lista);
     
   };
+
 
   useEffect(() => {
     getAdherentes();
@@ -74,7 +76,7 @@ export default function Adherentes() {
                   scope="col"
                   class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                 >
-                  Fecha Nacimiento
+                  Fecha de Nacimiento
                 </th>
                 <th
                   scope="col"

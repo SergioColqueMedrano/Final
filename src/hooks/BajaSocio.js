@@ -32,6 +32,7 @@ export default function BajaSocio(props) {
         mostrarOverlay={true}
         posicionModal={"center"}
         padding={"20px"}
+        mostrarContenedor={true}
       >
         <Contenido>
           <h1>¿Desea dar de baja al Socio?</h1>

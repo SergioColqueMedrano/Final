@@ -36,6 +36,7 @@ export default function AltaSocio(props) {
         mostrarOverlay={true}
         posicionModal={"center"}
         padding={"20px"}
+        mostrarContenedor={true}
       >
         <Contenido>
           <h1>¿Desea dar de alta al Socio?</h1>

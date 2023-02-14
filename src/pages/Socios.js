@@ -5,6 +5,8 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import AgregarAdherente from "../hooks/AgregarAdherente";
 import BajaSocio from "../hooks/BajaSocio";
 import AltaSocio from "../hooks/AltaSocio";
+import ModificarSocio from "../hooks/ModificarSocio";
+import MostrarCobro from "../hooks/MostrarCobro";
 import { BeatLoader } from "react-spinners";
 
 export default function Socios() {
@@ -119,19 +121,7 @@ export default function Socios() {
                     scope="col"
                     class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
                   >
-                    Fecha Nacimiento
-                  </th>
-                  <th
-                    scope="col"
-                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                  >
                     Socio Activo
-                  </th>
-                  <th
-                    scope="col"
-                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                  >
-                    ID
                   </th>
                   <th
                     scope="col"
@@ -151,6 +141,19 @@ export default function Socios() {
                   >
                     Dar de alta
                   </th>
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    Modificar
+                  </th>
+                  
+                  <th
+                    scope="col"
+                    class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                  >
+                    Mostrar Cobro
+                  </th>
                 </tr>
               </thead>
               <tbody className="w-full pt-500">
@@ -165,15 +168,9 @@ export default function Socios() {
                     <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.dni}
                     </td>
-                    <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                      {socios.dob}
-                    </td>
 
                     <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.activo ? "✔️" : "❌"}
-                    </td>
-                    <td className="select-text border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                      {socios.id}
                     </td>
                     <td className="border max-w-xs border-slate-700 bg-slate-400">
                       <AgregarAdherente value={socios.id}></AgregarAdherente>
@@ -183,6 +180,12 @@ export default function Socios() {
                     </td>
                     <td className="border max-w-xs border-slate-700 bg-slate-400">
                       <AltaSocio value={socios.id}></AltaSocio>
+                    </td>
+                    <td className="border max-w-xs border-slate-700 bg-slate-400">
+                      <ModificarSocio value={socios.id}></ModificarSocio>
+                    </td>
+                    <td className="border max-w-xs border-slate-700 bg-slate-400">
+                      <MostrarCobro value={socios.id}></MostrarCobro>
                     </td>
                   </tr>
                 ))}

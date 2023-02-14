@@ -36,6 +36,7 @@ export default function BajaAdherente(props) {
         mostrarOverlay={true}
         posicionModal={"center"}
         padding={"20px"}
+        mostrarContenedor={true}
       >
         <Contenido>
           <h1>¿Desea dar de baja al Adherente?</h1>

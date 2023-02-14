@@ -51,6 +51,7 @@ export default function ModificarCobro(props) {
         mostrarOverlay={true}
         posicionModal={"center"}
         padding={"20px"}
+        mostrarContenedor={true}
       >
         <Contenido>
           <h1>Ingrese los nuevos datos</h1>
