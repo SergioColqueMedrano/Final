@@ -26,7 +26,9 @@ export default function SeleccionarCobro(props) {
   }, []);
 
   return (
-    <select className="w-32 h-8 mb-5 ml-3" onClick={(e) => props.traerId(e.target.value)}>
+    <select
+    className="w-32 h-8 mb-5 ml-3 border-2 border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+    onClick={(e) => props.traerId(e.target.value)}>
       {listCobros.map((item) => (
         <option value={item.id}>
           {item.nombre}

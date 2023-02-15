@@ -7,7 +7,6 @@ import BajaSocio from "../hooks/BajaSocio";
 import AltaSocio from "../hooks/AltaSocio";
 import ModificarSocio from "../hooks/ModificarSocio";
 import MostrarCobro from "../hooks/MostrarCobro";
-import { BeatLoader } from "react-spinners";
 
 export default function Socios() {
   const [listSocios, setListSocios] = useState([]);
@@ -57,11 +56,12 @@ export default function Socios() {
   return (
     <div className="bg-green-180 bg ">
       <div className="mt-5 flex-col ">
-        <div className=" mr-10 float-left pl-10 mt-5 ">
+        <form className=" mr-10 float-left pl-10 mt-5 ">
           <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Nombre"
+              required={true}
               onChange={(e) => setNombre(e.target.value)}
               value={nombre}
               type="text"
@@ -69,6 +69,7 @@ export default function Socios() {
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Apellido"
+              required={true}
               onChange={(e) => setApellido(e.target.value)}
               value={apellido}
             />
@@ -76,6 +77,7 @@ export default function Socios() {
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="DNI"
               type={"number"}
+              required={true}
               onChange={(e) => setDni(e.target.value)}
               value={dni}
             />
@@ -83,17 +85,27 @@ export default function Socios() {
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="DOB"
               type={"date"}
+              required={true}
               onChange={(e) => setDob(e.target.value)}
               value={dob}
             />
-            <button
-              className="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2"
-              onClick={addSocio}
+            <input 
+            type="button" 
+            value="+ Agregar Socio"
+            className="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2"
+            onClick={() => {
+              if (nombre !== "" && apellido !== "" && dni !== "" && dob !== "") {
+                addSocio();
+              }else {
+                alert("Debe completar todos los campos");
+              }
+
+            }}
             >
-              + Agregar Socio
-            </button>
+
+            </input>
           </div>
-        </div>
+        </form>
         <div className="flex mr-10 mb-64 w-54 h-14">
           <div className="flex">
             <table className="mb-64 flex-col min-w-full text-center table-fixed">

@@ -61,26 +61,29 @@ export default function ModificarSocio(props) {
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setNombre(e.target.value)}
-              placeholder={currentNombre}
-              value={nombre}
+              type={"text"}
+              defaultValue={currentNombre}
+              placeholder="Nombre"
+
             />
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               type={"text"}
-              placeholder={currentApellido}
               onChange={(e) => setApellido(e.target.value)}
-              value={apellido}
+              defaultValue={currentApellido}
+              placeholder="Apellido"
             />
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               onChange={(e) => setDni(e.target.value)}
               type={"number"}
-              placeholder={currentDni}
-              value={dni}
+              defaultValue={currentDni}
+              placeholder="DNI"
             />
             
 
             <Boton
+              type="sumbit"
               className="float-left mr-7"
               onClick={() => modificarSocio() && setEstadoModal(!estadoModal)}
             >

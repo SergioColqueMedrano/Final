@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import Barra from "../components/Barra";
 import ModificarCobro from "../hooks/ModificarCobro";
 
 export default function Cobros() {
@@ -47,11 +46,12 @@ export default function Cobros() {
   return (
     <div className="bg-green-180 bg w-full">
       <div className="mt-5 flex-col ">
-        <div className=" mr-10 float-left pl-10 mt-5 ">
+        <form className=" mr-10 float-left pl-10 mt-5">
           <div className="pr-2 border-r-4 border-green-700 w-52 columns-1 ">
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Nombre"
+              required={true}
               onChange={(e) => setNombre(e.target.value)}
               value={nombre}
             />
@@ -59,23 +59,32 @@ export default function Cobros() {
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Monto"
               type={"number"}
+              required={true}
               onChange={(e) => setMonto(e.target.value)}
               value={monto}
             />
             <input
               className="mb-7 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-dark dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Descripcion"
+              required={true}
               onChange={(e) => setDesc(e.target.value)}
               value={desc}
             />
-            <button
+            <input
+              type="button"
+              value=" + Agregar Plan"
               className="bg-green-800 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full ml-4 mt-2"
-              onClick={addCobro}
+              onClick={(e) => {
+                if (nombre !== "" && monto !== "" && desc !== "") {
+                  addCobro();
+                }else{
+                  alert("No se pueden dejar campos vacios");
+                }
+              }}
             >
-              + Crear Plan
-            </button>
+            </input>
           </div>
-        </div>
+        </form>
         <div className="flex mr-10 mb-64 w-54 h-14">
           <div className="flex">
             <table className="mb-64 flex-col min-w-full text-center table-fixed">
