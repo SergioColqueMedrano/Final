@@ -2,13 +2,17 @@ import useAuth from "../hooks/useAuth.js";
 
 export default function Login() {
   const { email, setEmail, password, setPassword, login } = useAuth();
+  const logged = (useAuth().isLogged ? "Logged" : "Not logged");
+  
+
+
   return (
     <div className="w-full max-w-xs m-auto bg-green-800 rounded p-5">
       <div className="shadow-md rounded px-8 pt-10 pb-10 mb-4 bg-neutral-100">
         <header>
           <img
-            class="w-40 h-40 mx-auto mb-5"
-            src="https://o.remove.bg/downloads/9cd76578-6e8c-462d-ad9d-234aa17aa65c/W0DjKZ_A_400x400-removebg-preview.png"
+            className="w-40 h-40 mx-auto mb-5"
+            src="https://i.postimg.cc/rFjJ7qTt/logo-sap.png" alt="Descripcion saca warning"
           />
         </header>
         <div className="mb-4">
@@ -37,6 +41,7 @@ export default function Login() {
         >
           Iniciar sesión
         </button>
+        <div>{logged}</div>
       </div>
     </div>
   );

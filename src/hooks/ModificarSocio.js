@@ -26,6 +26,8 @@ export default function ModificarSocio(props) {
       dni: obj.dni.length === 0 ? parseInt(currentDni) : parseInt(obj.dni),
       nombre: obj.nombre.length === 0 ? currentNombre : obj.nombre,
     });
+
+    //alert("Doc: "+document.id+" modificado correctamente");
   };
 
   const traerSocio = async () => {
@@ -84,7 +86,7 @@ export default function ModificarSocio(props) {
 
             <Boton
               type="sumbit"
-              className="float-left mr-7"
+              className="float-left mr-7" 
               onClick={() => modificarSocio() && setEstadoModal(!estadoModal)}
             >
               Confirmar

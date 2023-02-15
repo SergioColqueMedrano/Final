@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+
 export default function Barra() {
   return (
     <div className="w-full h-24 bg-green-800 mx-auto">

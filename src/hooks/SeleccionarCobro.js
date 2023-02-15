@@ -16,7 +16,9 @@ export default function SeleccionarCobro(props) {
     querySnapshot.forEach((doc) => {
       obj = doc.data();
       obj.id = doc.id;
-      lista.push(obj);
+      if (obj.id !== "socio") {
+        lista.push(obj);
+      }
     });
     setListCobros(lista);
   };

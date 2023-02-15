@@ -45,7 +45,7 @@ export default function Adherentes() {
 
   useEffect(() => {
     getAdherentes();
-  }, []);
+  }, [listAdherentes]);
 
   return (
     <div className="bg-green-180 bg w-full">

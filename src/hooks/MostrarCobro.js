@@ -9,7 +9,7 @@ import { async } from "@firebase/util";
 export default function MostrarCobro(props) {
   const [estadoModal, setEstadoModal] = useState(false);
   const [listAdherentes, setListAdherentes] = useState([]);
-  //const [listPlanes, setListPlanes] = useState([]);
+  const [listPlanes, setListPlanes] = useState([]);
 
   const [cobro , setCobro] = useState(0);
 
@@ -27,7 +27,7 @@ export default function MostrarCobro(props) {
     setListAdherentes(lista);
     };
 
-  /*const getPlanes = async () => {
+  const getPlanes = async () => {
     let obj;
     let lista = [];
     const querySnapshot = await getDocs(collection(db, "planes"));
@@ -39,10 +39,30 @@ export default function MostrarCobro(props) {
     setListPlanes(lista);
   };
 
+    // Sumar todos los montos de los planes activos de los adherentes del socio
+    const getMontoTotal = () => {
+        let monto = 0;
+        listAdherentes.forEach((adherente) => {
+            monto += getMontoPlan(adherente.activo, adherente.idPlan);
+        });
 
+        return monto;
+    };
 
+    // If is active return the monto of the plan, if not return 0
+    const getMontoPlan = (isActive, idPlan) => {
+        let monto = 0;
+        if (isActive) {
+            listPlanes.forEach((plan) => {
+                if (plan.id === idPlan) {
+                    monto = plan.monto;
+                }
+            });
+        }
+        return monto;        
+    };
   
-
+    /* FUNCION EZE
     const getMontoTotal = () => {
         let monto = 0;
         listAdherentes.forEach((adherente) => {
@@ -54,13 +74,12 @@ export default function MostrarCobro(props) {
         });
         console.log(monto);
         setCobro(monto);
-    };*/
+    };
+    */
 
     useEffect(() => {
         getAdherentesBySocioId(props.value);
-        /*getPlanes();
-        getMontoTotal();*/
-        
+        getPlanes();
     }, []);
     
 
@@ -119,6 +138,12 @@ export default function MostrarCobro(props) {
                               >
                               Adherente Activo
                               </th>
+                              <th
+                              scope="col"
+                              class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                              >
+                              Monto
+                              </th>
                           </tr>
                           </thead>
                             <tbody className="w-full pt-500">
@@ -140,10 +165,13 @@ export default function MostrarCobro(props) {
                                 <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                                     {adherente.activo ? "✔️" : "❌"}
                                 </td>
+                                <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                                    ${getMontoPlan(adherente.activo, adherente.idPlan)}
+                                </td>
                                 </tr>
                             ))}
                             </tbody>
-                            <td className="border-slate-700 bg-slate-300 whitespace-nowrap text-center text-2xl font-bold text-gray-900">Total: ${cobro}</td >
+                            <td className="border-slate-700 bg-slate-300 whitespace-nowrap text-center text-2xl font-bold text-gray-900">Total: ${getMontoTotal()}</td >
                       </table>
                      
                     </div>

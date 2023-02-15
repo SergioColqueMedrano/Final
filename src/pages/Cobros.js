@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import ModificarCobro from "../utils/ModificarCobro";
+import ModificarCobro from "../hooks/ModificarCobro";
 
 export default function Cobros() {
   const [listCobros, setListCobros] = useState([]);
@@ -24,7 +24,7 @@ export default function Cobros() {
 
   useEffect(() => {
     getCobros();
-  }, []);
+  }, [listCobros]);
 
   const addCobro = async () => {
     const obj = { desc, monto, nombre };

@@ -15,6 +15,8 @@ export default function Socios() {
   const [dni, setDni] = useState("");
   const [dob, setDob] = useState("");
 
+  
+
   const getSocios = async () => {
     let obj;
     let lista = [];
@@ -49,7 +51,7 @@ export default function Socios() {
 
   useEffect(() => {
     getSocios();
-  }, []);
+  }, [listSocios]);
 
   
 
@@ -170,7 +172,7 @@ export default function Socios() {
               </thead>
               <tbody className="w-full pt-500">
                 {listSocios.map((socios, index) => (
-                  <tr className="border-b" key={index}>
+                  <tr className="border-b" key={index} id={socios.id}>
                     <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
                       {socios.nombre}
                     </td>

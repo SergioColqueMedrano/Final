@@ -3,7 +3,8 @@ import * as firebase from "../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 export default function useAuth() {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,11 +12,13 @@ export default function useAuth() {
 
   const navigate = useNavigate();
 
+
   async function login() {
     try {
       setLoading(true);
       const u = await firebase.login(email, password);
       setUser(u);
+      setIsLogged(true);
       navigate("/app");
     } catch (error) {
       setError(error.message)
@@ -35,9 +38,11 @@ export default function useAuth() {
     password,
     error,
     loading,
+    isLogged,
     setEmail,
     setPassword,
     login,
+    setIsLogged,
     clear,
   };
 }
