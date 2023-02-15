@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
-import isLogged from "../hooks/useAuth";
+import { auth } from "../firebase/firebase";
 
 export default function RequireAuth({children}) {
-    if (!false) {
+    if (auth.currentUser === null) {  
         console.log('No estas logueado')
         return <Navigate to='/'/>
     } else {

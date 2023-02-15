@@ -2,7 +2,7 @@ import useAuth from "../hooks/useAuth.js";
 
 export default function Login() {
   const { email, setEmail, password, setPassword, login } = useAuth();
-  const logged = (useAuth().isLogged ? "Logged" : "Not logged");
+  //const logged = (useAuth().isLogged ? "Logged" : "Not logged"); // Para testeos
   
 
 
@@ -41,7 +41,6 @@ export default function Login() {
         >
           Iniciar sesión
         </button>
-        <div>{logged}</div>
       </div>
     </div>
   );

@@ -2,16 +2,13 @@ import React, { useEffect } from "react";
 import Modal from "../components/Modal";
 import styled from "styled-components";
 import { useState } from "react";
-import { doc, collection, getDocs, getDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import { async } from "@firebase/util";
 
 export default function MostrarCobro(props) {
   const [estadoModal, setEstadoModal] = useState(false);
   const [listAdherentes, setListAdherentes] = useState([]);
   const [listPlanes, setListPlanes] = useState([]);
-
-  const [cobro , setCobro] = useState(0);
 
   const getAdherentesBySocioId = async (idSocio) => {
     let obj;
@@ -49,7 +46,7 @@ export default function MostrarCobro(props) {
         return monto;
     };
 
-    // If is active return the monto of the plan, if not return 0
+    // Obtener el monto del plan de un adherente
     const getMontoPlan = (isActive, idPlan) => {
         let monto = 0;
         if (isActive) {
@@ -61,26 +58,13 @@ export default function MostrarCobro(props) {
         }
         return monto;        
     };
-  
-    /* FUNCION EZE
-    const getMontoTotal = () => {
-        let monto = 0;
-        listAdherentes.forEach((adherente) => {
-            listPlanes.forEach((plan) => {
-                if (adherente.idPlan === plan.id && adherente.activo) {
-                    monto += plan.monto;
-                }
-            });
-        });
-        console.log(monto);
-        setCobro(monto);
-    };
-    */
 
     useEffect(() => {
         getAdherentesBySocioId(props.value);
         getPlanes();
-    }, []);
+    }, 
+    // eslint-disable-next-line
+    []);
     
 
   return (
@@ -204,18 +188,3 @@ const Contenido = styled.div`
     border-radius: 3px;
   }
 `;
-const Boton = styled.button`
-  display: block;
-  padding: 10px 30px;
-  border-radius: 100px;
-  color: #fff;
-  border: none;
-  background: #1766dc;
-  cursor: pointer;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  transition: 0.3s ease all;
-  &:hover {
-    background: #0066ff;
-  }
-`; 

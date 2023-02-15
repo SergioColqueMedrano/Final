@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { useState } from "react";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
-import SeleccionarCobro from "./SeleccionarCobro";
 
 export default function ModificarSocio(props) {
   const [estadoModal, setEstadoModal] = useState(false);
@@ -20,14 +19,11 @@ export default function ModificarSocio(props) {
   const modificarSocio = async () => {
     const obj = { apellido, dni, nombre};
     const ref = doc(db, "socios", props.value);
-    const document = await getDoc(ref);
     await updateDoc(ref, {
       apellido: obj.apellido.length === 0 ? currentApellido : obj.apellido,
       dni: obj.dni.length === 0 ? parseInt(currentDni) : parseInt(obj.dni),
       nombre: obj.nombre.length === 0 ? currentNombre : obj.nombre,
     });
-
-    //alert("Doc: "+document.id+" modificado correctamente");
   };
 
   const traerSocio = async () => {

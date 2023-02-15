@@ -19,7 +19,6 @@ export default function ModificarCobro(props) {
   const modificarCobro = async () => {
     const obj = { desc, monto, nombre };
     const ref = doc(db, "planes", props.value);
-    const document = await getDoc(ref);
     await updateDoc(ref, {
       desc: obj.desc.length === 0 ? currentDesc : obj.desc,
       monto: obj.monto.length === 0 ? parseInt(currentMonto) : parseInt(obj.monto),

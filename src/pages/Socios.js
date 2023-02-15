@@ -15,8 +15,6 @@ export default function Socios() {
   const [dni, setDni] = useState("");
   const [dob, setDob] = useState("");
 
-  
-
   const getSocios = async () => {
     let obj;
     let lista = [];

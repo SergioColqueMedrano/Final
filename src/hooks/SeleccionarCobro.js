@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-
-
-
+import { collection, getDocs } from "firebase/firestore";
 
 export default function SeleccionarCobro(props) {
   const [listCobros, setListCobros] = useState([]);
-
-
   const getCobros = async () => {
     let obj;
     let lista = [];

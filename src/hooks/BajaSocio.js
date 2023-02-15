@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "../components/Modal";
 import styled from "styled-components";
 import { useState } from "react";
-import { doc, updateDoc, getDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 export default function BajaSocio(props) {
@@ -10,7 +10,6 @@ export default function BajaSocio(props) {
 
   const bajaSocio = async () => {
     const ref = await doc(db, "socios", props.value);
-    const document = await getDoc(ref);
     await updateDoc(ref, {
       activo: false,
     });

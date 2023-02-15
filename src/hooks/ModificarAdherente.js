@@ -22,7 +22,6 @@ export default function ModificarCobro(props) {
   const modificarAdherente = async () => {
     const obj = { apellido, dni, nombre, idPlan };
     const ref = doc(db, "adherentes", props.value);
-    const document = await getDoc(ref);
     await updateDoc(ref, {
       apellido: obj.apellido.length === 0 ? currentApellido : obj.apellido,
       dni: obj.dni.length === 0 ? parseInt(currentDni) : parseInt(obj.dni),

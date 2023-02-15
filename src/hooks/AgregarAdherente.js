@@ -3,30 +3,17 @@ import styled from "styled-components";
 import Modal from "../components/Modal";
 import { useState } from "react";
 import { db } from "../firebase/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import SeleccionarCobro, {changeId, changeVariables} from "./SeleccionarCobro";
+import { collection, addDoc } from "firebase/firestore";
+import SeleccionarCobro from "./SeleccionarCobro";
 
 export default function AgregarAdherente(props) {
   const [estadoModal, setEstadoModal] = useState(false);
-  const [listAdherentes, setListAdherentes] = useState([]);
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [dni, setDni] = useState("");
   const [dob, setDob] = useState("");
   const [idPlan, setIdPlan] = useState("");
 
-
-  const getAdherentes = async () => {
-    let obj;
-    let lista = [];
-    const querySnapshot = await getDocs(collection(db, "adherentes"));
-    querySnapshot.forEach((doc) => {
-      obj = doc.data();
-      obj.id = doc.id;
-      lista.push(obj);
-    });
-    setListAdherentes(lista);
-  };
   const clearInput = () => {
     setApellido("");
     setNombre("");
@@ -48,7 +35,6 @@ export default function AgregarAdherente(props) {
     });
     console.log(dbRef.id);
     clearInput();
-    getAdherentes();
   };
   const traerId = (id) => {
     setIdPlan(id);

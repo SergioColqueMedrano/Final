@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { getDocs, getDoc, doc, collection, addDoc, updateDoc } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 import BajaAdherente from "../hooks/BajaAdherente";
 import AltaAdherente from "../hooks/AltaAdherente";
@@ -8,26 +8,6 @@ import ModificarAdherente from "../hooks/ModificarAdherente";
 
 export default function Adherentes() {
   const [listAdherentes, setListAdherentes] = useState([]);
-  const [planName , setPlanName] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const cargarPag = () => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false);
-    },2000)
-  }
- 
-  /*
-  const getPlanName = async (idPlanBusqueda) => {
-    const ref = await doc(db, "planes", idPlanBusqueda);
-    const document = await getDoc(ref);
-
-    let planObj = document.data();
-
-    return planObj.nombre;
-  };
-  */
 
   const getAdherentes = async () => {
     let obj;
@@ -41,7 +21,6 @@ export default function Adherentes() {
     setListAdherentes(lista);
     
   };
-
 
   useEffect(() => {
     getAdherentes();

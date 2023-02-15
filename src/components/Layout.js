@@ -14,6 +14,7 @@ export default function Layout() {
     <div className="w-full h-24 bg-green-800 mx-auto">
       <Barra/>
       <Routes>
+        <Route path="" element={<RequiereAuth><Home/></RequiereAuth>} />
         <Route path="home" element={<RequiereAuth><Home/></RequiereAuth>} />
         <Route path="socios" element={<RequiereAuth><Socios /></RequiereAuth>} />
         <Route path="adherentes" element={<RequiereAuth><Adherentes /></RequiereAuth>} />

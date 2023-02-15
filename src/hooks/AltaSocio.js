@@ -2,11 +2,7 @@ import React from "react";
 import Modal from "../components/Modal";
 import styled from "styled-components";
 import { useState } from "react";
-import {
-  doc,
-  updateDoc,
-  getDoc,
-} from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 export default function AltaSocio(props) {
@@ -14,7 +10,6 @@ export default function AltaSocio(props) {
 
   const altaSocio = async () => {
     const ref = doc(db, "socios", props.value)
-    const document = await getDoc(ref);
     await updateDoc(ref, {
       activo: true,
     });
