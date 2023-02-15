@@ -9,9 +9,9 @@ import { async } from "@firebase/util";
 export default function MostrarCobro(props) {
   const [estadoModal, setEstadoModal] = useState(false);
   const [listAdherentes, setListAdherentes] = useState([]);
+  //const [listPlanes, setListPlanes] = useState([]);
 
   const [cobro , setCobro] = useState(0);
-
 
   const getAdherentesBySocioId = async (idSocio) => {
     let obj;
@@ -27,30 +27,40 @@ export default function MostrarCobro(props) {
     setListAdherentes(lista);
     };
 
+  /*const getPlanes = async () => {
+    let obj;
+    let lista = [];
+    const querySnapshot = await getDocs(collection(db, "planes"));
+    querySnapshot.forEach((doc) => {
+      obj = doc.data();
+      obj.id = doc.id;
+      lista.push(obj);
+    });
+    setListPlanes(lista);
+  };
 
-   const getMontoPlan = async (idPlan, res) => {
-        let MontoPlan = 0;
-        const docRef = doc(db, "planes", idPlan);
-        const docSnap = await getDoc(docRef);
 
-        if (docSnap.exists()) {
-            MontoPlan = docSnap.data().monto;
-            console.log("Document data:", docSnap.data());
-        }else {
-            console.log("No such document!");
-        }
 
-        res(MontoPlan);
-    };
+  
 
-    const getMontoTotal = (idPlan) => {
-        let total = 16;
-        total = getMontoPlan(idPlan);
-        console.log(total);
-    };
+    const getMontoTotal = () => {
+        let monto = 0;
+        listAdherentes.forEach((adherente) => {
+            listPlanes.forEach((plan) => {
+                if (adherente.idPlan === plan.id && adherente.activo) {
+                    monto += plan.monto;
+                }
+            });
+        });
+        console.log(monto);
+        setCobro(monto);
+    };*/
 
     useEffect(() => {
         getAdherentesBySocioId(props.value);
+        /*getPlanes();
+        getMontoTotal();*/
+        
     }, []);
     
 
@@ -76,75 +86,68 @@ export default function MostrarCobro(props) {
             <div className="bg-green-180 bg">
                 <div className="flex ml-10 mt-10 mr-10 w-54 h-14">
                     <div className="flex">
-                    <table className="mb-64 flex-col text-center table-fixed">
-                        <thead className="border-b">
-                        <tr>
-                            <th
-                            scope="col"
-                            class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                            >
-                            Nombre
-                            </th>
-                            <th
-                            scope="col"
-                            class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                            >
-                            Apellido
-                            </th>
-                            <th
-                            scope="col"
-                            class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                            >
-                            D.N.I.
-                            </th>
-                            <th
-                            scope="col"
-                            class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                            >
-                            Fecha de Nacimiento
-                            </th>
-                            <th
-                            scope="col"
-                            class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                            >
-                            Adherente Activo
-                            </th>
-                            <th
-                            scope="col"
-                            class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
-                            >
-                            Monto
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody className="w-full pt-500">
-                        {listAdherentes.map((adherente, index) => (
-                            <tr className="border-b" key={index}>
-                            <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                                {adherente.nombre}
-                            </td>
-                            <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                                {adherente.apellido}
-                            </td>
-                            <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                                {adherente.dni}
-                            </td>
-                            <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                                {adherente.dob}
-                            </td>
+                      <table className="mb-64 flex-col text-center table-fixed">
+                          <thead className="border-b">
+                          <tr>
+                              <th
+                              scope="col"
+                              class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                              >
+                              Nombre
+                              </th>
+                              <th
+                              scope="col"
+                              class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                              >
+                              Apellido
+                              </th>
+                              <th
+                              scope="col"
+                              class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                              >
+                              D.N.I.
+                              </th>
+                              <th
+                              scope="col"
+                              class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                              >
+                              Fecha de Nacimiento
+                              </th>
+                              <th
+                              scope="col"
+                              class="border max-w-xs border-slate-700 text-sm font-medium text-gray-900 px-6 py-4 bg-slate-400"
+                              >
+                              Adherente Activo
+                              </th>
+                          </tr>
+                          </thead>
+                            <tbody className="w-full pt-500">
+                                {listAdherentes.map((adherente, index) => (
+                                <tr className="border-b" key={index}>
+                                <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                                    {adherente.nombre}
+                                </td>
+                                <td className=" border border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                                    {adherente.apellido}
+                                </td>
+                                <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                                    {adherente.dni}
+                                </td>
+                                <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                                    {adherente.dob}
+                                </td>
 
-                            <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                                {adherente.activo ? "✔️" : "❌"}
-                            </td>
-                            <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
-                                {}
-                            </td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
+                                <td className="border max-w-xs border-slate-700 text-sm text-gray-900 font-medium px-6 py-4 whitespace-nowrap bg-slate-300 hover:bg-slate-500">
+                                    {adherente.activo ? "✔️" : "❌"}
+                                </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                            <td className="border-slate-700 bg-slate-300 whitespace-nowrap text-center text-2xl font-bold text-gray-900">Total: ${cobro}</td >
+                      </table>
+                     
                     </div>
-                    <h1 className="text-2xl font-bold text-gray-900">Total a Pagar: ${cobro}</h1>
+                    
                 </div>
             </div>
             
