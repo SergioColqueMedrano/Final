@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "firebase/firestore";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import ModificarCobro from "../hooks/ModificarCobro";
+import ModificarCobro from "../utils/ModificarCobro";
 
 export default function Cobros() {
   const [listCobros, setListCobros] = useState([]);

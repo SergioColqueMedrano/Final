@@ -4,7 +4,7 @@ import Modal from "../components/Modal";
 import { useState } from "react";
 import { db } from "../firebase/firebase";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import SeleccionarCobro, {changeId, changeVariables} from "../hooks/SeleccionarCobro";
+import SeleccionarCobro, {changeId, changeVariables} from "./SeleccionarCobro";
 
 export default function AgregarAdherente(props) {
   const [estadoModal, setEstadoModal] = useState(false);
