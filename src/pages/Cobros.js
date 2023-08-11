@@ -24,7 +24,7 @@ export default function Cobros() {
 
   useEffect(() => {
     getCobros();
-  }, [listCobros]);
+  }, []);
 
   const addCobro = async () => {
     const obj = { desc, monto, nombre };
