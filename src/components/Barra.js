@@ -10,28 +10,29 @@ export default function Barra() {
           className="absolute mt-2 ml-2 max-h-20"
           src="https://sanatorioadventista.org.ar/assets/img/footer_logo_sap.png"
         ></img>
-
-        <div className="absolute mt-3 w-fit h-16 pl-36 flex">
-          <NavLink to={"/app/home"}>
-            <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3 h-full hover:text-black hover:bg-gray-200">
-              Home
-            </button>
-          </NavLink>
-          <NavLink to={"/app/socios"}>
-            <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3 h-full hover:text-black hover:bg-gray-200">
-              Gestionar Socios
-            </button>
-          </NavLink>
-          <NavLink to={"/app/adherentes"}>
-            <button className="bg-green-800  text-white font-bold py-2 px-12 rounded ml-3.5 h-full hover:text-black hover:bg-gray-200">
-              Gestionar Adherentes
-            </button>
-          </NavLink>
-          <NavLink to={"/app/cobros"}>
-            <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3.5 h-full hover:text-black hover:bg-gray-200">
-              Gestionar Cobros
-            </button>
-          </NavLink>
+        <div className="container mx-auto flex flex-row h-20 items-center justify-end text-center">
+          <div className="absolute mt-3 w-fit h-16 pl-36 flex">
+            <NavLink to={"/app/home"}>
+              <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3 h-full hover:text-black hover:bg-gray-200">
+                Home
+              </button>
+            </NavLink>
+            <NavLink to={"/app/socios"}>
+              <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3 h-full hover:text-black hover:bg-gray-200">
+                Gestionar Socios
+              </button>
+            </NavLink>
+            <NavLink to={"/app/adherentes"}>
+              <button className="bg-green-800  text-white font-bold py-2 px-12 rounded ml-3.5 h-full hover:text-black hover:bg-gray-200">
+                Gestionar Adherentes
+              </button>
+            </NavLink>
+            <NavLink to={"/app/cobros"}>
+              <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3.5 h-full hover:text-black hover:bg-gray-200">
+                Gestionar Cobros
+              </button>
+            </NavLink>
+          </div>
         </div>
       </div>
     </div>
