@@ -13,22 +13,22 @@ export default function Barra() {
         <div className="container mx-auto flex flex-row h-20 items-center justify-end text-center">
           <div className="absolute mt-3 w-fit h-16 pl-36 flex">
             <NavLink to={"/app/home"}>
-              <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3 h-full hover:text-black hover:bg-gray-200">
+              <button className="menu-item-a">
                 Home
               </button>
             </NavLink>
             <NavLink to={"/app/socios"}>
-              <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3 h-full hover:text-black hover:bg-gray-200">
+              <button className="menu-item-a">
                 Gestionar Socios
               </button>
             </NavLink>
             <NavLink to={"/app/adherentes"}>
-              <button className="bg-green-800  text-white font-bold py-2 px-12 rounded ml-3.5 h-full hover:text-black hover:bg-gray-200">
+              <button className="menu-item-a">
                 Gestionar Adherentes
               </button>
             </NavLink>
             <NavLink to={"/app/cobros"}>
-              <button className="bg-green-800 text-white font-bold py-2 px-12 rounded ml-3.5 h-full hover:text-black hover:bg-gray-200">
+              <button className="menu-item-a">
                 Gestionar Cobros
               </button>
             </NavLink>
