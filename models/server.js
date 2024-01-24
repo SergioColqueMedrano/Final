@@ -4,7 +4,7 @@ const cors = require('cors');
 class Server {
 
     constructor() {
-        this.restserver = express();
+        this.app = express();
         
         this.port = process.env.PORT;
         this.usuariosPath = '/api/usuarios';
@@ -17,23 +17,23 @@ class Server {
 
     middlewares(){
         
-        this.restserver.use( cors());
+        this.app.use( cors());
 
         //Lectura y parseo del body
-        this.restserver.use( express.json());
+        this.app.use( express.json());
 
         // Directorio público
-        this.restserver.use(express.static('public'));
+        this.app.use(express.static('public'));
     }
 
 
 
     routes() {
-        this.restserver.use( this.usuariosPath, require('../routes/usuarios'));
+        this.app.use( this.usuariosPath, require('../routes/usuarios'));
     }
 
     listen(){
-        this.restserver.listen(process.env.PORT, () => {
+        this.app.listen(process.env.PORT, () => {
             console.log('Servidor corriendo en puerto', process.env.PORT);
         });
     }
