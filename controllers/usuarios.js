@@ -67,11 +67,17 @@ const usuariosPatch = (req, res = response) => {
 }
 
 //DELETE
-const usuariosDelete = (req, res = response) => {
-    res.json({
-        ok: true,
-        msg: 'delete API - controlador'
-    });
+const usuariosDelete = async(req, res = response) => {
+
+    const { id } = req.params;
+
+    // Fisicamente lo borramos
+    // const usuario = await Usuario.findByIdAndDelete( id );
+
+    const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
+
+
+    res.json(usuario);
 }
 
 module.exports= {
