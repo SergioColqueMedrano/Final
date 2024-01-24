@@ -13,13 +13,19 @@ router.get('/', usuariosGet)
 router.post('/',[
     check('nombre', 'El nombre es obligatorio').not().isEmpty(),
     check('correo', 'El correo no es válido').isEmail(),
+    check('correo').custom( emailExiste ),
     check('password', 'El password debe ser de más de 6 letras').isLength({ min: 6 }),
     //check('rol', 'No es rol valido'),isIn(['ADMIN_ROLE', 'USER_ROLE']),
     check('rol').custom( esRoleValido ),
     validarCampos
 ], usuariosPost)
 
-router.put('/:id', usuariosPut)
+router.put('/:id',[
+    check('id', 'No es un ID válido').isMongoId(),
+    check('id').custom( existeUsuarioPorId ),
+    check('rol').custom( esRoleValido ), 
+    validarCampos
+ ], usuariosPut)
 
 router.patch('/', usuariosPatch)
 
