@@ -2,26 +2,32 @@ const { response, request } = require('express');
 
 const usuariosGet = async(req = request, res = response) => {
 
+    const { q, nombre = 'No name', apikey, page = 1, limit } = req.query;
+
     
     res.json({
-        ok: true,
         msg: 'get API - controlador',
+        q,
+        nombre,
+        apikey,
+        page,
+        limit
     });
 }
 
 //POST
 const usuariosPost = (req, res = response) => {
-    const body = req.body;
+    const { nombre, edad } = req.body;
 
     res.json({
-        ok: true,
         msg: 'post API - controlador',
-        body
+        nombre,
+        edad
     });
 }
 //PUT
 const usuariosPut = (req, res = response) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
     res.json({
         ok: true,
